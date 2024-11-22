@@ -982,12 +982,9 @@ interface StartersScreenProps {
 }
 const StartersScreen: React.FC<StartersScreenProps> = () => {
   const { dishes, updateDishCount } = useDishes();
-  const navigation = useNavigation<StartersScreenNavigationProp>(); // Initialize the navigation hook with the type
-
-  // State to track the selected starters and their quantities
+  const navigation = useNavigation<StartersScreenNavigationProp>();
   const [selectedDishes, setSelectedDishes] = useState<{ [key: string]: number }>({});
 
-  // Function to calculate the total price
   const calculateTotal = () => {
     return Object.keys(selectedDishes).reduce((total, dishId) => {
       const dish = dishes.find((dish) => dish.id.toString() === dishId);
@@ -998,7 +995,6 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
     }, 0);
   };
 
-  // Function to increase the quantity of a dish
   const increaseQuantity = (dishId: string) => {
     setSelectedDishes((prevState) => {
       const updatedState = { ...prevState, [dishId]: (prevState[dishId] || 0) + 1 };
@@ -1007,7 +1003,6 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
     });
   };
 
-  // Function to decrease the quantity of a dish
   const decreaseQuantity = (dishId: string) => {
     setSelectedDishes((prevState) => {
       const currentQuantity = prevState[dishId] || 0;
@@ -1020,7 +1015,6 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
     });
   };
 
-  // Function to remove a dish from the selected list
   const removeDish = (dishId: string) => {
     setSelectedDishes((prevState) => {
       const newState = { ...prevState };
@@ -1030,18 +1024,17 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
     });
   };
 
-  // Calculate the total price based on selected dishes
   const totalPrice = calculateTotal();
 
   return (
-    <View style={{ flex: 1, padding: 20, backgroundColor: '#F5EFEF' }}>
+    <View style={{ flex: 1, padding: 20, backgroundColor: '#442A00' }}>
       <Text
         style={{
           fontSize: 32,
           fontWeight: 'bold',
           textAlign: 'center',
           marginBottom: 20,
-          color: 'black',
+          color: 'white',
         }}
       >
         🥗 Starters - Fresh & Light
@@ -1050,23 +1043,23 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
         data={dishes.filter((dish) => dish.category === 'starter' && dish.count > 0)}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={{ marginBottom: 20, padding: 10, backgroundColor: '#FFF', borderRadius: 10, borderColor: '#FF3131', borderWidth: 1 }}>
+          <View style={{ marginBottom: 20, padding: 10, backgroundColor: '#FFF', borderRadius: 10, borderColor: '#442A00', borderWidth: 1 }}>
             <Image source={{ uri: item.image }} style={{ width: '100%', height: 150, borderRadius: 10 }} />
-            <Text style={{ fontSize: 18, marginTop: 10, color: 'black' }}>{item.name}</Text>
-            <Text style={{ fontSize: 16, marginTop: 5, color: 'black' }}>Available: {item.count}</Text>
-            <Text style={{ fontSize: 16, marginTop: 5, color: 'black' }}>Price: R{item.price}</Text>
+            <Text style={{ fontSize: 18, marginTop: 10, color: '#442A00' }}>{item.name}</Text>
+            <Text style={{ fontSize: 16, marginTop: 5, color: '#442A00' }}>Available: {item.count}</Text>
+            <Text style={{ fontSize: 16, marginTop: 5, color: '#442A00' }}>Price: R{item.price}</Text>
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
               <TouchableOpacity
                 onPress={() => increaseQuantity(item.id.toString())}
-                style={{ backgroundColor: '#FF3131', padding: 10, borderRadius: 10, marginRight: 10 }}
+                style={{ backgroundColor: '#442A00', padding: 10, borderRadius: 10, marginRight: 10 }}
               >
                 <Text style={{ color: 'white', fontWeight: 'bold' }}>+</Text>
               </TouchableOpacity>
-              <Text style={{ fontSize: 16, color: 'black' }}>Quantity: {selectedDishes[item.id.toString()] || 0}</Text>
+              <Text style={{ fontSize: 16, color: '#442A00' }}>Quantity: {selectedDishes[item.id.toString()] || 0}</Text>
               <TouchableOpacity
                 onPress={() => decreaseQuantity(item.id.toString())}
-                style={{ backgroundColor: '#FF3131', padding: 10, borderRadius: 10, marginLeft: 10 }}
+                style={{ backgroundColor: '#442A00', padding: 10, borderRadius: 10, marginLeft: 10 }}
               >
                 <Text style={{ color: 'white', fontWeight: 'bold' }}>-</Text>
               </TouchableOpacity>
@@ -1076,7 +1069,7 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
               onPress={() => removeDish(item.id.toString())}
               style={{
                 marginTop: 15,
-                backgroundColor: '#FF3131',
+                backgroundColor: '#442A00',
                 paddingVertical: 10,
                 paddingHorizontal: 20,
                 borderRadius: 10,
@@ -1089,15 +1082,14 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
         )}
       />
 
-      {/* Total Price - now clickable to navigate to PaymentScreen */}
       <TouchableOpacity
-        onPress={() => navigation.navigate('PaymentScreen')} // Navigate to PaymentScreen
+        onPress={() => navigation.navigate('PaymentScreen')}
         style={{
           position: 'absolute',
           bottom: 20,
           left: 20,
           right: 20,
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00',
           padding: 15,
           borderRadius: 10,
           shadowColor: '#000',
@@ -1114,11 +1106,31 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
     </View>
   );
 };
+
 const PaymentScreen: React.FC = () => {
-  // Declare state variables before the return statement
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
+  const [error, setError] = useState('');
+
+  const validateInputs = () => {
+    if (cardNumber.length !== 16 || isNaN(Number(cardNumber))) return 'Invalid card number';
+    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) return 'Invalid expiry date format';
+    if (cvv.length !== 3 || isNaN(Number(cvv))) return 'Invalid CVV';
+    return '';
+  };
+
+  const processPayment = () => {
+    const validationError = validateInputs();
+    if (validationError) {
+      setError(validationError);
+      ToastAndroid.show(validationError, ToastAndroid.SHORT);
+    } else {
+      setError('');
+      ToastAndroid.show('Payment Successful!', ToastAndroid.SHORT);
+      // Mock payment processing logic here
+    }
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: '#442A00', padding: 20 }}>
@@ -1126,7 +1138,7 @@ const PaymentScreen: React.FC = () => {
       
       <TextInput
         placeholder="Card Number"
-        placeholderTextColor="white"
+        placeholderTextColor="#B2B2B2"
         onChangeText={setCardNumber}
         keyboardType="numeric"
         style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: 20, color: 'white' }}
@@ -1134,28 +1146,31 @@ const PaymentScreen: React.FC = () => {
       
       <TextInput
         placeholder="Expiry Date (MM/YY)"
-        placeholderTextColor="white"
+        placeholderTextColor="#B2B2B2"
         onChangeText={setExpiryDate}
         style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: 20, color: 'white' }}
       />
       
       <TextInput
         placeholder="CVV"
-        placeholderTextColor="white"
+        placeholderTextColor="#B2B2B2"
         onChangeText={setCvv}
         keyboardType="numeric"
         style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: 20, color: 'white' }}
       />
       
+      {error ? <Text style={{ color: 'red', marginTop: 10 }}>{error}</Text> : null}
+      
       <TouchableOpacity 
-        onPress={() => ToastAndroid.show('Payment Processed!', ToastAndroid.SHORT)} 
-        style={{ marginTop: 20, backgroundColor: '#B2B2B2', padding: 10 }}
+        onPress={processPayment} 
+        style={{ marginTop: 20, backgroundColor: '#442A00', padding: 10, borderRadius: 10 }}
       >
-        <Text style={{ color: 'white', textAlign: 'center' }}>Submit Payment</Text>
+        <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>Submit Payment</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
 export type RootStackParamList = {
   Splash: undefined;
   Choice: undefined;
