@@ -353,7 +353,7 @@ const FilterScreen: React.FC<Props> = ({ navigation }) => {
       <Text
         style={{
           fontSize: 42,
-          color: 'black',
+          color: '#442A00', // Updated color
           textAlign: 'center',
           fontWeight: 'bold',
           marginBottom: 20,
@@ -363,7 +363,7 @@ const FilterScreen: React.FC<Props> = ({ navigation }) => {
       </Text>
       <Text
         style={{
-          color: 'black',
+          color: '#442A00', // Updated color
           fontSize: 24,
           marginTop: 20,
           textAlign: 'center',
@@ -379,7 +379,7 @@ const FilterScreen: React.FC<Props> = ({ navigation }) => {
           flexDirection: 'row',
           alignItems: 'center',
           marginTop: 20,
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00', // Updated color
           borderRadius: 10,
           paddingVertical: 15,
           paddingHorizontal: 20,
@@ -413,7 +413,7 @@ const FilterScreen: React.FC<Props> = ({ navigation }) => {
           flexDirection: 'row',
           alignItems: 'center',
           marginTop: 20,
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00', // Updated color
           borderRadius: 10,
           paddingVertical: 15,
           paddingHorizontal: 20,
@@ -447,7 +447,7 @@ const FilterScreen: React.FC<Props> = ({ navigation }) => {
           flexDirection: 'row',
           alignItems: 'center',
           marginTop: 20,
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00', // Updated color
           borderRadius: 10,
           paddingVertical: 15,
           paddingHorizontal: 20,
@@ -475,27 +475,7 @@ const FilterScreen: React.FC<Props> = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
 
-      {/* Total Section */}
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 20,
-          left: 20,
-          right: 20,
-          backgroundColor: '#FF3131',
-          padding: 15,
-          borderRadius: 10,
-          shadowColor: '#000',
-          shadowOpacity: 0.3,
-          shadowRadius: 4,
-          shadowOffset: { width: 0, height: 2 },
-          elevation: 5,
-        }}
-      >
-        <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>
-          Total: R{total.toFixed(2)}
-        </Text>
-      </View>
+      {/* Removed the Total Section */}
     </View>
   );
 };
@@ -533,42 +513,43 @@ const CustomDishScreen: React.FC = () => {
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#F5EFEF', padding: 20 }}>
-      <Text style={{ fontSize: 32, color: 'black', textAlign: 'center' }}>Christoffel</Text>
-      <Text style={{ color: 'black', fontSize: 18, marginTop: 20, textAlign: 'center' }}>
+      <Text style={{ fontSize: 32, color: '#442A00', textAlign: 'center' }}>Christoffel</Text>
+      <Text style={{ color: '#442A00', fontSize: 18, marginTop: 20, textAlign: 'center' }}>
         Create and Customize Your Dish
       </Text>
 
       {/* Category Dropdown */}
       <DropDownPicker
-  open={open}
-  setOpen={setOpen}
-  items={[
-    { label: '🥗 Starter', value: 'starter' },
-    { label: '🍝 Main', value: 'main' },
-    { label: '🍰 Dessert', value: 'dessert' },
-  ]}
-  placeholder="Select Category"
-  containerStyle={{ height: 40, marginTop: 20 }}
-  style={{ backgroundColor: '#FF3131' }} // Red background for dropdown
-  dropDownContainerStyle={{ backgroundColor: '#FF3131' }} // Adjusted for dropdown options background
-  value={category}
-  setValue={setCategory}
-/>
+        open={open}
+        setOpen={setOpen}
+        items={[
+          { label: '🥗 Starter', value: 'starter' },
+          { label: '🍝 Main', value: 'main' },
+          { label: '🍰 Dessert', value: 'dessert' },
+        ]}
+        placeholder="Select Category"
+        containerStyle={{ height: 40, marginTop: 20 }}
+        style={{ backgroundColor: '#442A00' }} // Updated color
+        dropDownContainerStyle={{ backgroundColor: '#442A00' }} // Adjusted for dropdown options background
+        value={category}
+        setValue={setCategory}
+      />
 
+      {/* Dish Dropdown */}
+      <DropDownPicker
+        open={dishSelectOpen}
+        setOpen={setDishSelectOpen}
+        items={sampleDishes
+          .filter((dish) => dish.category === category)
+          .map((dish) => ({ label: dish.name, value: dish.name }))}
+        placeholder="Select Available Dish"
+        containerStyle={{ height: 40, marginTop: 20 }}
+        style={{ backgroundColor: '#442A00' }} // Updated color
+        dropDownContainerStyle={{ backgroundColor: '#442A00' }} // Adjusted for dropdown options background
+        value={selectedDish}
+        setValue={setSelectedDish} // Now directly setting the selected dish value
+      />
 
-<DropDownPicker
-  open={dishSelectOpen}
-  setOpen={setDishSelectOpen}
-  items={sampleDishes
-    .filter((dish) => dish.category === category)
-    .map((dish) => ({ label: dish.name, value: dish.name }))}
-  placeholder="Select Available Dish"
-  containerStyle={{ height: 40, marginTop: 20 }}
-  style={{ backgroundColor: '#FF3131' }} // Red background for dropdown
-  dropDownContainerStyle={{ backgroundColor: '#FF3131' }} // Adjusted for dropdown options background
-  value={selectedDish}
-  setValue={setSelectedDish} // Now directly setting the selected dish value
-/>
       {selectedDish && (
         <View style={{ backgroundColor: '#333333', padding: 15, marginTop: 20, borderRadius: 10 }}>
           <Text style={{ color: '#FFD700', fontSize: 24, fontWeight: 'bold' }}>
@@ -589,7 +570,7 @@ const CustomDishScreen: React.FC = () => {
         onPress={handlePhotoUpload}
         style={{
           marginTop: 20,
-          backgroundColor: '#FF3131', // Red background for upload button
+          backgroundColor: '#442A00', // Updated color
           padding: 10,
           borderRadius: 10,
         }}
@@ -605,7 +586,7 @@ const CustomDishScreen: React.FC = () => {
           height: 50,
           textAlignVertical: 'top',
           borderRadius: 10,
-          borderColor: '#FF3131',
+          borderColor: '#442A00', // Updated color
           borderWidth: 1,
         }}
         placeholder="Cooking Time (e.g., 30 mins)"
@@ -620,7 +601,7 @@ const CustomDishScreen: React.FC = () => {
           height: 100,
           textAlignVertical: 'top',
           borderRadius: 10,
-          borderColor: '#FF3131',
+          borderColor: '#442A00', // Updated color
           borderWidth: 1,
         }}
         placeholder="Chef's Notes..."
@@ -636,7 +617,7 @@ const CustomDishScreen: React.FC = () => {
           height: 100,
           textAlignVertical: 'top',
           borderRadius: 10,
-          borderColor: '#FF3131',
+          borderColor: '#442A00', // Updated color
           borderWidth: 1,
         }}
         placeholder="Add or edit dish description..."
@@ -647,6 +628,7 @@ const CustomDishScreen: React.FC = () => {
     </ScrollView>
   );
 };
+
 const MainCourseScreen: React.FC = () => {
   const { dishes, updateDishCount } = useDishes();
   const navigation = useNavigation(); // Assuming you want to add navigation functionality
@@ -708,7 +690,7 @@ const MainCourseScreen: React.FC = () => {
           fontWeight: 'bold',
           textAlign: 'center',
           marginBottom: 20,
-          color: '#6B3C00',
+          color: '#442A00', // Updated text color
         }}
       >
         🍝 Main Courses
@@ -723,7 +705,7 @@ const MainCourseScreen: React.FC = () => {
               padding: 10,
               backgroundColor: '#FFF',
               borderRadius: 10,
-              borderColor: '#FF3131',
+              borderColor: '#442A00', // Updated border color
               borderWidth: 1,
             }}
           >
@@ -735,15 +717,15 @@ const MainCourseScreen: React.FC = () => {
                 borderRadius: 10,
               }}
             />
-            <Text style={{ fontSize: 18, marginTop: 10, color: 'black' }}>{item.name}</Text>
-            <Text style={{ fontSize: 16, marginTop: 5, color: 'black' }}>Available: {item.count}</Text>
-            <Text style={{ fontSize: 16, marginTop: 5, color: 'black' }}>Price: ${item.price.toFixed(2)}</Text>
+            <Text style={{ fontSize: 18, marginTop: 10, color: '#442A00' }}>{item.name}</Text> {/* Updated text color */}
+            <Text style={{ fontSize: 16, marginTop: 5, color: '#442A00' }}>Available: {item.count}</Text> {/* Updated text color */}
+            <Text style={{ fontSize: 16, marginTop: 5, color: '#442A00' }}>Price: ${item.price.toFixed(2)}</Text> {/* Updated text color */}
 
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
               <TouchableOpacity
                 onPress={() => increaseQuantity(item.id.toString())}
                 style={{
-                  backgroundColor: '#FF3131',
+                  backgroundColor: '#442A00', // Updated button color
                   padding: 10,
                   borderRadius: 10,
                   marginRight: 10,
@@ -755,7 +737,7 @@ const MainCourseScreen: React.FC = () => {
               <TouchableOpacity
                 onPress={() => decreaseQuantity(item.id.toString())}
                 style={{
-                  backgroundColor: '#FF3131',
+                  backgroundColor: '#442A00', // Updated button color
                   padding: 10,
                   borderRadius: 10,
                   marginLeft: 10,
@@ -769,7 +751,7 @@ const MainCourseScreen: React.FC = () => {
               onPress={() => removeDish(item.id.toString())}
               style={{
                 marginTop: 15,
-                backgroundColor: '#FF3131',
+                backgroundColor: '#442A00', // Updated button color
                 paddingVertical: 10,
                 paddingHorizontal: 20,
                 borderRadius: 10,
@@ -790,7 +772,7 @@ const MainCourseScreen: React.FC = () => {
           bottom: 20,
           left: 20,
           right: 20,
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00', // Updated background color
           padding: 15,
           borderRadius: 10,
           shadowColor: '#000',
@@ -807,6 +789,7 @@ const MainCourseScreen: React.FC = () => {
     </View>
   );
 };
+
 
 const DessertScreen: React.FC = () => {
   const { dishes } = useDishes(); // Get dishes data
@@ -867,7 +850,7 @@ const DessertScreen: React.FC = () => {
 
   return (
     <View style={{ flex: 1, padding: 20, backgroundColor: '#F5EFEF' }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20, color: 'black' }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20, color: '#442A00' }}>
         🍰 Desserts
       </Text>
       <FlatList
@@ -877,7 +860,7 @@ const DessertScreen: React.FC = () => {
           <View
             style={{
               marginBottom: 20,
-              borderColor: '#FF3131',
+              borderColor: '#442A00', // Using the specified color for the border
               borderWidth: 1,
               borderRadius: 10,
               padding: 10,
@@ -888,16 +871,16 @@ const DessertScreen: React.FC = () => {
               source={{ uri: item.image }}
               style={{ width: '100%', height: 150, borderRadius: 10 }}
             />
-            <Text style={{ fontSize: 18, marginTop: 10, color: 'black' }}>{item.name}</Text>
-            <Text style={{ fontSize: 16, marginTop: 5, color: 'black' }}>Available: {item.count}</Text>
-            <Text style={{ fontSize: 16, marginTop: 5, color: 'black' }}>Price: R{item.price}</Text>
+            <Text style={{ fontSize: 18, marginTop: 10, color: '#442A00' }}>{item.name}</Text>
+            <Text style={{ fontSize: 16, marginTop: 5, color: '#442A00' }}>Available: {item.count}</Text>
+            <Text style={{ fontSize: 16, marginTop: 5, color: '#442A00' }}>Price: R{item.price}</Text>
 
             {/* Quantity controls */}
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
               <TouchableOpacity
                 onPress={() => increaseQuantity(item.id.toString())}
                 style={{
-                  backgroundColor: '#FF3131',
+                  backgroundColor: '#442A00', // Using the color here
                   padding: 10,
                   borderRadius: 10,
                   marginRight: 10,
@@ -911,7 +894,7 @@ const DessertScreen: React.FC = () => {
               <TouchableOpacity
                 onPress={() => decreaseQuantity(item.id.toString())}
                 style={{
-                  backgroundColor: '#FF3131',
+                  backgroundColor: '#442A00', // Using the color here
                   padding: 10,
                   borderRadius: 10,
                   marginLeft: 10,
@@ -926,7 +909,7 @@ const DessertScreen: React.FC = () => {
               onPress={() => removeDish(item.id.toString())}
               style={{
                 marginTop: 15,
-                backgroundColor: '#FF3131',
+                backgroundColor: '#442A00', // Using the color here
                 paddingVertical: 10,
                 paddingHorizontal: 20,
                 borderRadius: 10,
@@ -942,7 +925,7 @@ const DessertScreen: React.FC = () => {
       {/* Total Price */}
       <View
         style={{
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00', // Background color set to #442A00
           padding: 15,
           borderRadius: 10,
           shadowColor: '#000',
@@ -962,7 +945,7 @@ const DessertScreen: React.FC = () => {
       <TouchableOpacity
         onPress={handleNavigateToPayment}
         style={{
-          backgroundColor: '#FF3131',
+          backgroundColor: '#442A00', // Background color set to #442A00
           paddingVertical: 15,
           marginTop: 20,
           borderRadius: 10,
@@ -1183,6 +1166,5 @@ export type RootStackParamList = {
   MainCourseScreen: undefined;
   DessertScreen: undefined;
 };
-
 
 export default AppWrapper;
