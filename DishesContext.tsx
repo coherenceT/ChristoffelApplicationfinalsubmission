@@ -13,7 +13,7 @@ type Dish = {
 const initialDishes: Dish[] = [
   { 
     id: 1, 
-    name: 'Chocolate Cake', 
+    name: 'Velvet Lava Cake', 
     category: 'dessert', 
     price: 5.99, 
     image: 'https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg', 
@@ -21,7 +21,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 2, 
-    name: 'Grilled Chicken', 
+    name: 'Fire-Grilled Monarch', 
     category: 'main', 
     price: 12.99, 
     image: 'https://www.themealdb.com/images/media/meals/1529446352.jpg', 
@@ -29,7 +29,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 3, 
-    name: 'Apple Pie', 
+    name: 'Autumn Orchard Pie', 
     category: 'dessert', 
     price: 4.99, 
     image: 'https://www.themealdb.com/images/media/meals/yrstur1511816601.jpg', 
@@ -37,7 +37,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 4, 
-    name: 'Steak', 
+    name: 'Golden Sirloin', 
     category: 'main', 
     price: 14.99, 
     image: 'https://www.themealdb.com/images/media/meals/svprys1511176755.jpg', 
@@ -45,7 +45,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 5, 
-    name: 'Garlic Bread', 
+    name: 'Garlic Infusion Toast', 
     category: 'starter', 
     price: 3.99, 
     image: 'https://www.themealdb.com/images/media/meals/qwtrtp1511814705.jpg', 
@@ -53,7 +53,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 6, 
-    name: 'Cheesecake', 
+    name: 'Silken Cloud Cheesecake', 
     category: 'dessert', 
     price: 6.99, 
     image: 'https://www.themealdb.com/images/media/meals/qtqwwu1511792650.jpg', 
@@ -61,7 +61,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 7, 
-    name: 'Ice Cream Sundae', 
+    name: 'Whirlwind Sundae', 
     category: 'dessert', 
     price: 4.49, 
     image: 'https://www.themealdb.com/images/media/meals/tttxxp1511814083.jpg', 
@@ -69,7 +69,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 8, 
-    name: 'Brownie', 
+    name: 'Fudge Drizzle Brownie', 
     category: 'dessert', 
     price: 3.49, 
     image: 'https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg', 
@@ -77,7 +77,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 9, 
-    name: 'Pasta Carbonara', 
+    name: 'Crispy Carbonara Feast', 
     category: 'main', 
     price: 13.99, 
     image: 'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg', 
@@ -85,7 +85,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 10, 
-    name: 'Salmon', 
+    name: 'Emerald Salmon', 
     category: 'main', 
     price: 15.99, 
     image: 'https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg', 
@@ -93,7 +93,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 11, 
-    name: 'Vegetarian Burger', 
+    name: 'Green Haven Veggie Burger', 
     category: 'main', 
     price: 11.49, 
     image: 'https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg', 
@@ -101,7 +101,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 12, 
-    name: 'Caesar Salad', 
+    name: 'Mediterranean Caesar Delight', 
     category: 'starter', 
     price: 6.99, 
     image: 'https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg', 
@@ -109,7 +109,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 13, 
-    name: 'Tomato Soup', 
+    name: 'Sunset Tomato Soup', 
     category: 'starter', 
     price: 4.49, 
     image: 'https://www.themealdb.com/images/media/meals/vptwyt1511450962.jpg', 
@@ -117,7 +117,7 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 14, 
-    name: 'Bruschetta', 
+    name: 'Tuscan Bruschetta Bites', 
     category: 'starter', 
     price: 5.99, 
     image: 'https://www.themealdb.com/images/media/meals/sxwquu1511462512.jpg', 
@@ -125,13 +125,14 @@ const initialDishes: Dish[] = [
   },
   { 
     id: 15, 
-    name: 'Spring Rolls', 
+    name: 'Crisp Spring Rolls Delight', 
     category: 'starter', 
     price: 4.99, 
     image: 'https://www.themealdb.com/images/media/meals/uspvup1511643613.jpg', 
     count: 0 
   }
 ];
+
 
 interface DishesContextType {
   dishes: Dish[];

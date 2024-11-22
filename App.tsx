@@ -117,7 +117,7 @@ const AddToFilterScreen: React.FC = () => {
           fontSize: 24,
           fontWeight: 'bold',
           marginBottom: 20,
-          color: 'black',
+          color: '#2C3E50', // Darker color for text
           textAlign: 'center',
           fontFamily: 'Georgia',
         }}
@@ -132,7 +132,7 @@ const AddToFilterScreen: React.FC = () => {
               fontSize: 20,
               fontWeight: 'bold',
               marginBottom: 10,
-              color: 'black',
+              color: '#16A085', // Teal color for category headers
             }}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}s
@@ -145,7 +145,7 @@ const AddToFilterScreen: React.FC = () => {
                   key={dish.id}
                   style={{
                     borderWidth: 1,
-                    borderColor: '#FF3131',
+                    borderColor: '#FF3131', // Red border
                     borderRadius: 10,
                     width: '45%',
                     margin: 5,
@@ -155,13 +155,13 @@ const AddToFilterScreen: React.FC = () => {
                 >
                   <Image
                     source={{ uri: dish.image }}
-                    style={{ width: '100%', height: 150 }}
+                    style={{ width: '100%', height: 150, borderRadius: 10 }}
                   />
                   <View
                     style={{
                       padding: 10,
                       alignItems: 'center',
-                      backgroundColor: '#FF3131',
+                      backgroundColor: '#FF3131', // Red background for dish info
                     }}
                   >
                     <Text
@@ -193,7 +193,7 @@ const AddToFilterScreen: React.FC = () => {
                       <TouchableOpacity
                         onPress={() => updateDishCount(dish.id, -1)}  // Renamed to updateDishCount
                         style={{
-                          backgroundColor: '#E74C3C',
+                          backgroundColor: '#E74C3C', // Red button for decrement
                           padding: 10,
                           borderRadius: 5,
                         }}
@@ -212,7 +212,7 @@ const AddToFilterScreen: React.FC = () => {
                       <TouchableOpacity
                         onPress={() => updateDishCount(dish.id, 1)}  // Renamed to updateDishCount
                         style={{
-                          backgroundColor: '#2ECC71',
+                          backgroundColor: '#2ECC71', // Green button for increment
                           padding: 10,
                           borderRadius: 5,
                         }}
@@ -229,6 +229,7 @@ const AddToFilterScreen: React.FC = () => {
     </ScrollView>
   );
 };
+
 
 const Choice: React.FC<Props> = ({ navigation }) => {
   return (
@@ -766,7 +767,7 @@ const MainCourseScreen: React.FC = () => {
 
       {/* Total Price */}
       <TouchableOpacity
-        onPress={() => navigation.navigate('PaymentScreen')} // Navigate to PaymentScreen
+        onPress={() => navigation.navigate('Payment')} // Navigate to PaymentScreen
         style={{
           position: 'absolute',
           bottom: 20,
@@ -789,7 +790,6 @@ const MainCourseScreen: React.FC = () => {
     </View>
   );
 };
-
 
 const DessertScreen: React.FC = () => {
   const { dishes } = useDishes(); // Get dishes data
@@ -845,7 +845,7 @@ const DessertScreen: React.FC = () => {
 
   // Function to handle navigation to PaymentScreen
   const handleNavigateToPayment = () => {
-    navigation.navigate('PaymentScreen', { totalPrice }); // Pass total price to the PaymentScreen
+    navigation.navigate('Payment', { totalPrice }); // Pass total price to the PaymentScreen
   };
 
   return (
@@ -1066,7 +1066,7 @@ const StartersScreen: React.FC<StartersScreenProps> = () => {
       />
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('PaymentScreen')}
+        onPress={() => navigation.navigate('Payment')}
         style={{
           position: 'absolute',
           bottom: 20,
